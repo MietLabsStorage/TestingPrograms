@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calculator.Interfaces
 {
-    interface ICalculator
+    public interface ICalculator
     {
         /// <summary>
         /// Вычисляет сумму двух чисел

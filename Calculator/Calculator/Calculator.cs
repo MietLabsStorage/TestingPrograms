@@ -7,7 +7,7 @@ using Calculator.Interfaces;
 
 namespace Calculator
 {
-    class Calculator: ICalculator
+    public class Calculator: ICalculator
     {
         public double Sum(double a, double b)
         {
