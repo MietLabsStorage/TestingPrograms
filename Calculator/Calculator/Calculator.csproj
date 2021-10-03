@@ -53,6 +53,7 @@
     <Compile Include="CalculatorForm.Designer.cs">
       <DependentUpon>CalculatorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CalculatorPresenter.cs" />
     <Compile Include="EmptyParametrException.cs" />
     <Compile Include="Interfaces\ICalculator.cs" />
     <Compile Include="Interfaces\ICalculatorPresenter.cs" />

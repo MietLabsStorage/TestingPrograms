@@ -12,91 +12,37 @@ using Calculator.Interfaces;
 
 namespace Calculator
 {
-    public partial class CalculatorForm : Form, ICalculatorPresenter, ICalculatorView
+    public partial class CalculatorForm : Form, ICalculatorView
     {
-        private readonly Calculator _calculator;
+        private readonly ICalculator _calculator;
+        private readonly ICalculatorPresenter _calculatorPresenter;
 
         public CalculatorForm()
         {
             InitializeComponent();
             tbMessage.Enabled = false;
             _calculator = new Calculator();
+            _calculatorPresenter = new CalculatorPresenter(this, _calculator);
         }
 
         public void OnMultiplyClicked(object sender, EventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(GetFirstArgumentAsString()) ||
-                    string.IsNullOrEmpty(GetSecondArgumentAsString()))
-                {
-                    throw new EmptyParametrException();
-                }
-                double.TryParse(GetFirstArgumentAsString(), out double a);
-                double.TryParse(GetSecondArgumentAsString(), out double b);
-                PrintResult(_calculator.Multiply(a, b));
-            }
-            catch(Exception exception)
-            {
-                DisplayError(exception.Message);
-            }
+            _calculatorPresenter.OnMultiplyClicked();
         }
 
         public void OnDivideClicked(object sender, EventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(GetFirstArgumentAsString()) ||
-                    string.IsNullOrEmpty(GetSecondArgumentAsString()))
-                {
-                    throw new EmptyParametrException();
-                }
-                double.TryParse(GetFirstArgumentAsString(), out double a);
-                double.TryParse(GetSecondArgumentAsString(), out double b);
-                PrintResult(_calculator.Divide(a, b));
-            }
-            catch (Exception exception)
-            {
-                DisplayError(exception.Message);
-            }
+            _calculatorPresenter.OnDivideClicked();
         }
 
         public void OnMinusClicked(object sender, EventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(GetFirstArgumentAsString()) ||
-                    string.IsNullOrEmpty(GetSecondArgumentAsString()))
-                {
-                    throw new EmptyParametrException();
-                }
-                double.TryParse(GetFirstArgumentAsString(), out double a);
-                double.TryParse(GetSecondArgumentAsString(), out double b);
-                PrintResult(_calculator.Subtract(a, b));
-            }
-            catch (Exception exception)
-            {
-                DisplayError(exception.Message);
-            }
+            _calculatorPresenter.OnMinusClicked();
         }
 
         public void OnPlusClicked(object sender, EventArgs e)
         {
-            try
-            {
-                if (string.IsNullOrEmpty(GetFirstArgumentAsString()) ||
-                    string.IsNullOrEmpty(GetSecondArgumentAsString()))
-                {
-                    throw new EmptyParametrException();
-                }
-                double.TryParse(GetFirstArgumentAsString(), out double a);
-                double.TryParse(GetSecondArgumentAsString(), out double b);
-                PrintResult(_calculator.Sum(a, b));
-            }
-            catch (Exception exception)
-            {
-                DisplayError(exception.Message);
-            }
+            _calculatorPresenter.OnPlusClicked();
         }
 
         public void PrintResult(double result)

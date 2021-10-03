@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace Calculator.Interfaces
 {
-    interface ICalculatorPresenter
+    public interface ICalculatorPresenter
     {
         /// <summary>
         /// Вызывается формой в тот момент, когда пользователь нажал на кнопку '+'
         /// </summary>
-        void OnPlusClicked(object sender, EventArgs e);
+        void OnPlusClicked();
 
         /// <summary>
         /// Вызывается формой в тот момент, когда пользователь нажал на кнопку '-'
         /// </summary>
-        void OnMinusClicked(object sender, EventArgs e);
+        void OnMinusClicked();
 
         /// <summary>
         /// Вызывается формой в тот момент, когда пользователь нажал на кнопку '/'
         /// </summary>
-        void OnDivideClicked(object sender, EventArgs e);
+        void OnDivideClicked();
 
         /// <summary>
         /// Вызывается формой в тот момент, когда пользователь нажал на кнопку '*'
         /// </summary>
-        void OnMultiplyClicked(object sender, EventArgs e);
+        void OnMultiplyClicked();
     }
 }
