@@ -9,6 +9,6 @@ namespace Calculator
 {
     public class EmptyParametrException: Exception
     {
-        public override string Message => "Empty parametr";
+        public override string Message => "Empty parameter";
     }
 }
