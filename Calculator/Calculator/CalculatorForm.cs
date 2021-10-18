@@ -17,12 +17,12 @@ namespace Calculator
         private readonly ICalculator _calculator;
         private readonly ICalculatorPresenter _calculatorPresenter;
 
-        public CalculatorForm()
+        public CalculatorForm(ICalculatorPresenter calculatorPresenter)
         {
             InitializeComponent();
             tbMessage.Enabled = false;
             _calculator = new Calculator();
-            _calculatorPresenter = new CalculatorPresenter(this, _calculator);
+            _calculatorPresenter = calculatorPresenter ?? new CalculatorPresenter(this, _calculator);
         }
 
         public void OnMultiplyClicked(object sender, EventArgs e)
