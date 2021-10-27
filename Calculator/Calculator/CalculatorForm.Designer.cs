@@ -32,7 +32,7 @@ namespace Calculator
             this.tbA = new System.Windows.Forms.TextBox();
             this.tbB = new System.Windows.Forms.TextBox();
             this.btSum = new System.Windows.Forms.Button();
-            this.BtSubstract = new System.Windows.Forms.Button();
+            this.btSubstract = new System.Windows.Forms.Button();
             this.btMultiply = new System.Windows.Forms.Button();
             this.btDevide = new System.Windows.Forms.Button();
             this.tbMessage = new System.Windows.Forms.TextBox();
@@ -62,15 +62,15 @@ namespace Calculator
             this.btSum.UseVisualStyleBackColor = true;
             this.btSum.Click += new System.EventHandler(this.OnPlusClicked);
             // 
-            // BtSubstract
+            // btSubstract
             // 
-            this.BtSubstract.Location = new System.Drawing.Point(12, 93);
-            this.BtSubstract.Name = "BtSubstract";
-            this.BtSubstract.Size = new System.Drawing.Size(160, 23);
-            this.BtSubstract.TabIndex = 3;
-            this.BtSubstract.Text = "-";
-            this.BtSubstract.UseVisualStyleBackColor = true;
-            this.BtSubstract.Click += new System.EventHandler(this.OnMinusClicked);
+            this.btSubstract.Location = new System.Drawing.Point(12, 93);
+            this.btSubstract.Name = "btSubstract";
+            this.btSubstract.Size = new System.Drawing.Size(160, 23);
+            this.btSubstract.TabIndex = 3;
+            this.btSubstract.Text = "-";
+            this.btSubstract.UseVisualStyleBackColor = true;
+            this.btSubstract.Click += new System.EventHandler(this.OnMinusClicked);
             // 
             // btMultiply
             // 
@@ -108,7 +108,7 @@ namespace Calculator
             this.Controls.Add(this.tbMessage);
             this.Controls.Add(this.btDevide);
             this.Controls.Add(this.btMultiply);
-            this.Controls.Add(this.BtSubstract);
+            this.Controls.Add(this.btSubstract);
             this.Controls.Add(this.btSum);
             this.Controls.Add(this.tbB);
             this.Controls.Add(this.tbA);
@@ -124,7 +124,7 @@ namespace Calculator
         private System.Windows.Forms.TextBox tbA;
         private System.Windows.Forms.TextBox tbB;
         private System.Windows.Forms.Button btSum;
-        private System.Windows.Forms.Button BtSubstract;
+        private System.Windows.Forms.Button btSubstract;
         private System.Windows.Forms.Button btMultiply;
         private System.Windows.Forms.Button btDevide;
         private System.Windows.Forms.TextBox tbMessage;

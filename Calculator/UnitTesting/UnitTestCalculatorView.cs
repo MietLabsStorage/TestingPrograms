@@ -18,24 +18,31 @@ namespace UnitTesting
 
         private class TestCalculatorPresenter : ICalculatorPresenter
         {
+            public static string Message { get; set; }
+
+            static TestCalculatorPresenter()
+            {
+                Message = "";
+            }
+
             public void OnDivideClicked()
             {
-                throw new Exception("/");
+                Message = "/";
             }
 
             public void OnMinusClicked()
             {
-                throw new Exception("-");
+                Message = "-";
             }
 
             public void OnMultiplyClicked()
             {
-                throw new Exception("*");
+                Message = "*";
             }
 
             public void OnPlusClicked()
             {
-                throw new Exception("+");
+                Message = "+";
             }
         }
 
@@ -49,48 +56,66 @@ namespace UnitTesting
             _message = new TextBoxTester("tbMessage", _form);
         }
 
+        public void SetDown()
+        {
+            _form.Close();
+            TestCalculatorPresenter.Message = "";
+        }
+
+        [Test()]
         public void TestBtSum()
         {
             var button = "btSum";
             var message = "+";
             var okButton = new ButtonTester(button);
 
-            var eMes = Assert.Catch(() => okButton.Click())?.InnerException?.Message;
+            okButton.Click();
 
-            Assert.AreEqual(eMes, message);
+            Assert.AreEqual(TestCalculatorPresenter.Message, message);
+
+            SetDown();
         }
 
+        [Test()]
         public void TestBtMultiply()
         {
             var button = "btMultiply";
             var message = "*";
             var okButton = new ButtonTester(button);
 
-            var eMes = Assert.Catch(() => okButton.Click())?.InnerException?.Message;
+            okButton.Click();
 
-            Assert.AreEqual(eMes, message);
+            Assert.AreEqual(TestCalculatorPresenter.Message, message);
+
+            SetDown();
         }
 
-        public void TestBtbtDevide()
+        [Test()]
+        public void TestBtDevide()
         {
-            var button = "btbtDevide";
+            var button = "btDevide";
             var message = "/";
             var okButton = new ButtonTester(button);
 
-            var eMes = Assert.Catch(() => okButton.Click())?.InnerException?.Message;
+            okButton.Click();
 
-            Assert.AreEqual(eMes, message);
+            Assert.AreEqual(TestCalculatorPresenter.Message, message);
+
+            SetDown();
         }
 
+        [Test()]
         public void TestBtSubstract()
         {
             var button = "btSubstract";
             var message = "-";
             var okButton = new ButtonTester(button);
 
-            var eMes = Assert.Catch(() => okButton.Click())?.InnerException?.Message;
+            okButton.Click();
 
-            Assert.AreEqual(eMes, message);
+            Assert.AreEqual(TestCalculatorPresenter.Message, message);
+
+            SetDown();
         }
 
         [TestCase("1")]
