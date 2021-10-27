@@ -16,33 +16,31 @@ namespace UnitTesting
         private TextBoxTester _b;
         private TextBoxTester _message;
 
+        class PlusPanic : Exception { }
+        class MinusPanic : Exception { }
+        class MultiplyPanic : Exception { }
+        class DividePanic : Exception { }
+
         private class TestCalculatorPresenter : ICalculatorPresenter
         {
-            public static string Message { get; set; }
-
-            static TestCalculatorPresenter()
-            {
-                Message = "";
-            }
-
             public void OnDivideClicked()
             {
-                Message = "/";
+                throw new DividePanic();
             }
 
             public void OnMinusClicked()
             {
-                Message = "-";
+                throw new MinusPanic();
             }
 
             public void OnMultiplyClicked()
             {
-                Message = "*";
+                throw new MultiplyPanic();
             }
 
             public void OnPlusClicked()
             {
-                Message = "+";
+                throw new PlusPanic();
             }
         }
 
@@ -56,66 +54,98 @@ namespace UnitTesting
             _message = new TextBoxTester("tbMessage", _form);
         }
 
-        public void SetDown()
+        [TearDown]
+        public void Setdown()
         {
             _form.Close();
-            TestCalculatorPresenter.Message = "";
         }
 
-        [Test()]
-        public void TestBtSum()
+        [TestCase("", "")]
+        [TestCase("1", "")]
+        [TestCase("", "1")]
+        [TestCase("1", "1")]
+        public void TestBtSum(string a, string b)
         {
+            _a["Text"] = a;
+            _b["Text"] = b;
             var button = "btSum";
-            var message = "+";
             var okButton = new ButtonTester(button);
 
-            okButton.Click();
-
-            Assert.AreEqual(TestCalculatorPresenter.Message, message);
-
-            SetDown();
+            try
+            {
+                okButton.Click();
+                Assert.Fail();
+            }
+            catch(Exception e)
+            {
+                Assert.IsTrue(e?.InnerException is PlusPanic);
+            }
         }
 
-        [Test()]
-        public void TestBtMultiply()
+        [TestCase("", "")]
+        [TestCase("1", "")]
+        [TestCase("", "1")]
+        [TestCase("1", "1")]
+        public void TestBtMultiply(string a, string b)
         {
+            _a["Text"] = a;
+            _b["Text"] = b;
             var button = "btMultiply";
-            var message = "*";
             var okButton = new ButtonTester(button);
 
-            okButton.Click();
-
-            Assert.AreEqual(TestCalculatorPresenter.Message, message);
-
-            SetDown();
+            try
+            {
+                okButton.Click();
+                Assert.Fail();
+            }
+            catch(Exception e)
+            {
+                Assert.IsTrue(e?.InnerException is MultiplyPanic);
+            }
         }
 
-        [Test()]
-        public void TestBtDevide()
+        [TestCase("", "")]
+        [TestCase("1", "")]
+        [TestCase("", "1")]
+        [TestCase("1", "1")]
+        public void TestBtbtDevide(string a, string b)
         {
+            _a["Text"] = a;
+            _b["Text"] = b;
             var button = "btDevide";
-            var message = "/";
             var okButton = new ButtonTester(button);
 
-            okButton.Click();
-
-            Assert.AreEqual(TestCalculatorPresenter.Message, message);
-
-            SetDown();
+            try
+            {
+                okButton.Click();
+                Assert.Fail();
+            }
+            catch (Exception e)
+            {
+                Assert.IsTrue(e?.InnerException is DividePanic);
+            }
         }
 
-        [Test()]
-        public void TestBtSubstract()
+        [TestCase("", "")]
+        [TestCase("1", "")]
+        [TestCase("", "1")]
+        [TestCase("1", "1")]
+        public void TestBtSubstract(string a, string b)
         {
+            _a["Text"] = a;
+            _b["Text"] = b;
             var button = "btSubstract";
-            var message = "-";
             var okButton = new ButtonTester(button);
 
-            okButton.Click();
-
-            Assert.AreEqual(TestCalculatorPresenter.Message, message);
-
-            SetDown();
+            try
+            {
+                okButton.Click();
+                Assert.Fail();
+            }
+            catch (Exception e)
+            {
+                Assert.IsTrue(e?.InnerException is MinusPanic);
+            }
         }
 
         [TestCase("1")]
