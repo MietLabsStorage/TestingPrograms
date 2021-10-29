@@ -64,6 +64,9 @@ namespace UnitTesting
         [TestCase("1", "")]
         [TestCase("", "1")]
         [TestCase("1", "1")]
+        [TestCase("a", "")]
+        [TestCase("", "a")]
+        [TestCase("a", "a")]
         public void TestBtSum(string a, string b)
         {
             _a["Text"] = a;
@@ -71,21 +74,25 @@ namespace UnitTesting
             var button = "btSum";
             var okButton = new ButtonTester(button);
 
+            bool success = false;
             try
             {
                 okButton.Click();
-                Assert.Fail();
             }
             catch(Exception e)
             {
-                Assert.IsTrue(e?.InnerException is PlusPanic);
+                success = e?.InnerException is PlusPanic;
             }
+            Assert.IsTrue(success);
         }
 
         [TestCase("", "")]
         [TestCase("1", "")]
         [TestCase("", "1")]
         [TestCase("1", "1")]
+        [TestCase("a", "")]
+        [TestCase("", "a")]
+        [TestCase("a", "a")]
         public void TestBtMultiply(string a, string b)
         {
             _a["Text"] = a;
@@ -93,43 +100,51 @@ namespace UnitTesting
             var button = "btMultiply";
             var okButton = new ButtonTester(button);
 
+            bool success = false;
             try
             {
                 okButton.Click();
-                Assert.Fail();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                Assert.IsTrue(e?.InnerException is MultiplyPanic);
+                success = e?.InnerException is MultiplyPanic;
             }
+            Assert.IsTrue(success);
         }
 
         [TestCase("", "")]
         [TestCase("1", "")]
         [TestCase("", "1")]
         [TestCase("1", "1")]
-        public void TestBtbtDevide(string a, string b)
+        [TestCase("a", "")]
+        [TestCase("", "a")]
+        [TestCase("a", "a")]
+        public void TestBtDevide(string a, string b)
         {
             _a["Text"] = a;
             _b["Text"] = b;
             var button = "btDevide";
             var okButton = new ButtonTester(button);
 
+            bool success = false;
             try
             {
                 okButton.Click();
-                Assert.Fail();
             }
             catch (Exception e)
             {
-                Assert.IsTrue(e?.InnerException is DividePanic);
+                success = e?.InnerException is DividePanic;
             }
+            Assert.IsTrue(success);
         }
 
         [TestCase("", "")]
         [TestCase("1", "")]
         [TestCase("", "1")]
         [TestCase("1", "1")]
+        [TestCase("a", "")]
+        [TestCase("", "a")]
+        [TestCase("a", "a")]
         public void TestBtSubstract(string a, string b)
         {
             _a["Text"] = a;
@@ -137,18 +152,20 @@ namespace UnitTesting
             var button = "btSubstract";
             var okButton = new ButtonTester(button);
 
+            bool success = false;
             try
             {
                 okButton.Click();
-                Assert.Fail();
             }
             catch (Exception e)
             {
-                Assert.IsTrue(e?.InnerException is MinusPanic);
+                success = e?.InnerException is MinusPanic;
             }
+            Assert.IsTrue(success);
         }
 
         [TestCase("1")]
+        [TestCase("a")]
         public void TestGetFirstArgumentAsString(string a)
         {
             _a["Text"] = a;
@@ -159,6 +176,7 @@ namespace UnitTesting
         }
 
         [TestCase("1")]
+        [TestCase("a")]
         public void TestGetSecondArgumentAsString(string b)
         {
             _b["Text"] = b;
