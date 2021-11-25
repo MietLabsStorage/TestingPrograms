@@ -9,7 +9,6 @@ Scenario: Add two numbers
 	When click to sum
 	Then result is <result>
 	And close calculator
-
 Examples: 
 | a        | b       | result          |
 | 1        | 2       | 3               |
