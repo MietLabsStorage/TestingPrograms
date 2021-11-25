@@ -7,8 +7,8 @@ namespace MultyThreads
 {
     class Program
     {
-        public const int M = 5;
-        public const int N = 7;
+        public const int M = 250;
+        public const int N = 1000;
 
         static void Main(string[] args)
         {
@@ -57,7 +57,7 @@ namespace MultyThreads
             int ans = 0;
             for(int k = 0; k < M; k++)
             {
-                ans += leftMatrix[raw][k] * rightMatrix[k][column];
+                ans += (leftMatrix[raw][k] * rightMatrix[k][column]) % 10;
             }
             return ans;
         }
