@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 using System;
 
 namespace WebTesting
@@ -23,6 +24,12 @@ namespace WebTesting
         {
             return new WebDriverWait(Driver, TimeSpan.FromSeconds(timeSpan))
                 .Until(w => w.FindElement(by));
+        }
+
+        public static IWebElement GetWaitedElement(IWebElement element, int timeSpan = 10)
+        {
+            return new WebDriverWait(Driver, TimeSpan.FromSeconds(timeSpan))
+                .Until(ExpectedConditions.ElementToBeClickable(element));
         }
     }
 }

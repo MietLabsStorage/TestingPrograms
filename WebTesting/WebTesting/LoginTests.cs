@@ -2,8 +2,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Threading;
 
 namespace WebTesting
 {
@@ -47,9 +46,15 @@ namespace WebTesting
             WebDriver.GetWaitedElement(Password).SendKeys("passww");
             WebDriver.GetWaitedElement(Address).SendKeys("adr1");
             WebDriver.GetWaitedElement(City).SendKeys("City");
-            new SelectElement(WebDriver.GetWaitedElement(State)).SelectByIndex(1);
+            //WebDriver.GetWaitedElement(new SelectElement(WebDriver.GetWaitedElement(State)).Options[10]).Click();
+            var state = new SelectElement(WebDriver.GetWaitedElement(State));
+            Thread.Sleep(1000);
+            WebDriver.GetWaitedElement(state.Options[1]).Click();
             WebDriver.GetWaitedElement(Postcode).SendKeys("42742");
-            new SelectElement(WebDriver.GetWaitedElement(Country)).SelectByIndex(1);
+            //WebDriver.GetWaitedElement(new SelectElement(WebDriver.GetWaitedElement(Country)).Options[10]).Click();
+            var country = new SelectElement(WebDriver.GetWaitedElement(Country));
+            Thread.Sleep(1000);
+            WebDriver.GetWaitedElement(country.Options[1]).Click();
             WebDriver.GetWaitedElement(Phone).SendKeys("88001");
             WebDriver.GetWaitedElement(Alias).SendKeys("adr2");
         }
@@ -149,7 +154,9 @@ namespace WebTesting
         {
             TryLogin($"{DateTime.Now.Ticks}@ogo.aga");
             FillFields();
-            new SelectElement(WebDriver.GetWaitedElement(State)).SelectByIndex(0);
+            var state = new SelectElement(WebDriver.GetWaitedElement(State));
+            Thread.Sleep(1000);
+            WebDriver.GetWaitedElement(state.Options[0]).Click();
 
             WebDriver.GetWaitedElement(SubmitAccount).Click();
 
@@ -175,7 +182,9 @@ namespace WebTesting
         {
             TryLogin($"{DateTime.Now.Ticks}@ogo.aga");
             FillFields();
-            new SelectElement(WebDriver.GetWaitedElement(Country)).SelectByIndex(0);
+            var country = new SelectElement(WebDriver.GetWaitedElement(Country));
+            Thread.Sleep(1000);
+            WebDriver.GetWaitedElement(country.Options[0]).Click();
 
             WebDriver.GetWaitedElement(SubmitAccount).Click();
 
