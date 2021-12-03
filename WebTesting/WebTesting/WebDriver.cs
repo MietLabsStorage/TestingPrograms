@@ -1,5 +1,8 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Opera;
 using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 using System;
@@ -12,7 +15,10 @@ namespace WebTesting
 
         static WebDriver()
         {
-            Driver = new ChromeDriver();
+            //Driver = new ChromeDriver();
+            //Driver = new FirefoxDriver();
+            Driver = new EdgeDriver();
+            //Driver = new OperaDriver();
         }
 
         public static void SetUp(string url)

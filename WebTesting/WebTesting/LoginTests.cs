@@ -48,12 +48,12 @@ namespace WebTesting
             WebDriver.GetWaitedElement(City).SendKeys("City");
             //WebDriver.GetWaitedElement(new SelectElement(WebDriver.GetWaitedElement(State)).Options[10]).Click();
             var state = new SelectElement(WebDriver.GetWaitedElement(State));
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             WebDriver.GetWaitedElement(state.Options[1]).Click();
             WebDriver.GetWaitedElement(Postcode).SendKeys("42742");
             //WebDriver.GetWaitedElement(new SelectElement(WebDriver.GetWaitedElement(Country)).Options[10]).Click();
             var country = new SelectElement(WebDriver.GetWaitedElement(Country));
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             WebDriver.GetWaitedElement(country.Options[1]).Click();
             WebDriver.GetWaitedElement(Phone).SendKeys("88001");
             WebDriver.GetWaitedElement(Alias).SendKeys("adr2");
@@ -155,7 +155,7 @@ namespace WebTesting
             TryLogin($"{DateTime.Now.Ticks}@ogo.aga");
             FillFields();
             var state = new SelectElement(WebDriver.GetWaitedElement(State));
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             WebDriver.GetWaitedElement(state.Options[0]).Click();
 
             WebDriver.GetWaitedElement(SubmitAccount).Click();
@@ -183,7 +183,7 @@ namespace WebTesting
             TryLogin($"{DateTime.Now.Ticks}@ogo.aga");
             FillFields();
             var country = new SelectElement(WebDriver.GetWaitedElement(Country));
-            Thread.Sleep(1000);
+            Thread.Sleep(1500);
             WebDriver.GetWaitedElement(country.Options[0]).Click();
 
             WebDriver.GetWaitedElement(SubmitAccount).Click();
