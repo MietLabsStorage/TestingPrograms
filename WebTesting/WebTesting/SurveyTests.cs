@@ -45,7 +45,9 @@ namespace WebTesting
         public void Survey_NonChoisedAns_AlertWarning(string excpected)
         {
             WebDriver.GetWaitedElement(GetButtonPath).Click();
-            var actual = WebDriver.Driver.SwitchTo().Alert().Text;
+            var alert = WebDriver.Driver.SwitchTo().Alert();
+            var actual = alert.Text;
+            alert.Accept();
 
             Assert.AreEqual(excpected, actual);
         }

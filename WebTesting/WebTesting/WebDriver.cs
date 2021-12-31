@@ -15,10 +15,9 @@ namespace WebTesting
 
         static WebDriver()
         {
-            //Driver = new ChromeDriver();
+            Driver = new ChromeDriver();
             //Driver = new FirefoxDriver();
-            Driver = new EdgeDriver();
-            //Driver = new OperaDriver();
+            //Driver = new EdgeDriver();
         }
 
         public static void SetUp(string url)
